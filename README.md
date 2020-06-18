@@ -1,6 +1,6 @@
 向日葵8号卫星实时更新windows壁纸
 
-默认脚本运行路径为D:/;卫星每10分钟更新一次数据，所以刷新频率不必设的太高
+默认脚本运行路径为D:/
 
 windows任务计划程序设置如下：
 
@@ -8,7 +8,7 @@ windows任务计划程序设置如下：
 
 ![image](https://github.com/luzheminlulu/himawari8_background/blob/master/images/1.png)
 
-新建触发器:
+新建触发器，卫星每10分钟更新一次数据，所以刷新频率不必设的太高:
 
 ![image](https://github.com/luzheminlulu/himawari8_background/blob/master/images/2.png)
 
