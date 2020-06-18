@@ -1,14 +1,19 @@
 向日葵8号卫星实时更新windows壁纸
 
 windows任务计划程序设置如下：
+
 创建任务:
 ![image](https://github.com/luzheminlulu/himawari8_background/tree/master/Task_Scheduler_Setting/1.png)
+
 新建触发器:
 ![image](https://github.com/luzheminlulu/himawari8_background/tree/master/Task_Scheduler_Setting/2.png)
+
 新建操作，参数根据你的路径修改：
 ![image](https://github.com/luzheminlulu/himawari8_background/tree/master/Task_Scheduler_Setting/3.png)
+
 进行一些行为设置，不设置也可以，灵活参考：
 ![image](https://github.com/luzheminlulu/himawari8_background/tree/master/Task_Scheduler_Setting/4.png)
+
 效果图：
 ![image](https://github.com/luzheminlulu/himawari8_background/tree/master/Task_Scheduler_Setting/5.png)
 
