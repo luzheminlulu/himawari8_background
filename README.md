@@ -12,15 +12,15 @@ windows任务计划程序设置如下：
 
 新建操作，参数根据你的路径修改：
 
-![image](https://github.com/luzheminlulu/himawari8_background/blob/master/images/2.png)
+![image](https://github.com/luzheminlulu/himawari8_background/blob/master/images/3.png)
 
 进行一些行为设置，不设置也可以，灵活参考：
 
-![image](https://github.com/luzheminlulu/himawari8_background/blob/master/images/2.png)
+![image](https://github.com/luzheminlulu/himawari8_background/blob/master/images/4.png)
 
 效果图：
 
-![image](https://github.com/luzheminlulu/himawari8_background/blob/master/images/2.png)
+![image](https://github.com/luzheminlulu/himawari8_background/blob/master/images/5.png)
 
 参考资料:
 
