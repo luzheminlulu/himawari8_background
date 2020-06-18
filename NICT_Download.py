@@ -41,7 +41,7 @@ def fill_img(img_1,img_2,img_3,img_4, img_save_path):
 
 def dl_main():
 	clear_dir("D:/background/Download_Picture/")
-	#clear_dir("D:/background/Wallpaper/")
+	clear_dir("D:/background/Wallpaper/")
 	print("开始下载图片")
 	# 获取当前系统时间
 	utc_today = datetime.datetime.utcnow() - datetime.timedelta(minutes=20)  # 获取GMT时间并减去30分钟
