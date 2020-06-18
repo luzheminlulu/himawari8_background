@@ -40,8 +40,8 @@ def fill_img(img_1,img_2,img_3,img_4, img_save_path):
 
 
 def dl_main():
-	clear_dir("D:/background/Download_Picture/")
-	clear_dir("D:/background/Wallpaper/")
+	clear_dir("D:/himawari8_background-master/Download_Picture/")
+	clear_dir("D:/himawari8_background-master/Wallpaper/")
 	print("开始下载图片")
 	# 获取当前系统时间
 	utc_today = datetime.datetime.utcnow() - datetime.timedelta(minutes=20)  # 获取GMT时间并减去30分钟
@@ -55,7 +55,7 @@ def dl_main():
 	img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/" + delat_utc_today + "00_0_0.png"
 	name = delat_utc_today.replace("/", "_") + "00_0_0.png"  # 获取图片名字
 	# 图片保存路径
-	img_save_path = "D:/background/Download_Picture/" + name
+	img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
 	# 下载图片
 	download_img(img_url, img_save_path)
 	# 合成图片
@@ -64,7 +64,7 @@ def dl_main():
 	img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/" + delat_utc_today + "00_1_0.png"
 	name = delat_utc_today.replace("/", "_") + "00_1_0.png"  # 获取图片名字
 	# 图片保存路径
-	img_save_path = "D:/background/Download_Picture/" + name
+	img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
 	# 下载图片
 	download_img(img_url, img_save_path)
 	# 合成图片
@@ -73,7 +73,7 @@ def dl_main():
 	img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/" + delat_utc_today + "00_0_1.png"
 	name = delat_utc_today.replace("/", "_") + "00_0_1.png"  # 获取图片名字
 	# 图片保存路径
-	img_save_path = "D:/background/Download_Picture/" + name
+	img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
 	# 下载图片
 	download_img(img_url, img_save_path)
 	# 合成图片
@@ -82,13 +82,13 @@ def dl_main():
 	img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/" + delat_utc_today + "00_1_1.png"
 	name = delat_utc_today.replace("/", "_") + "00_1_1.png"  # 获取图片名字
 	# 图片保存路径
-	img_save_path = "D:/background/Download_Picture/" + name
+	img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
 	# 下载图片
 	download_img(img_url, img_save_path)
 	# 合成图片
 	img_4 = Image.open(img_save_path)
 	
-	new_img_save_path = "D:/background/Wallpaper/" + delat_utc_today.replace("/", "_")+".png"
+	new_img_save_path = "D:/himawari8_background-master/Wallpaper/" + delat_utc_today.replace("/", "_")+".png"
 	print(new_img_save_path)
 	fill_img(img_1,img_2,img_3,img_4, new_img_save_path)
 	return new_img_save_path
