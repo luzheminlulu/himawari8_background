@@ -89,7 +89,7 @@ def dl_main():
 	img_4 = Image.open(img_save_path)
 	
 	new_img_save_path = "D:/himawari8_background-master/Wallpaper/" + delat_utc_today.replace("/", "_")+".png"
-	print(new_img_save_path)
+	#print(new_img_save_path)
 	fill_img(img_1,img_2,img_3,img_4, new_img_save_path)
 	return new_img_save_path
 
