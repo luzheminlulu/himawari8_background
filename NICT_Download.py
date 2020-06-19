@@ -26,7 +26,8 @@ def download_img(url, img_save_path):
 
 def fill_img(img_1,img_2,img_3,img_4, img_save_path):
 	width, height = 1920, 1080      # 电脑屏幕大小
-	new_img = Image.new(img_1.mode, (width, height), color='black')
+	#new_img = Image.new(img_1.mode, (width, height), color='black')
+	new_img = Image.open("D:/himawari8_background-master/images/background.png")
 	img_1=img_1.crop((0,10,550,550))
 	img_2=img_2.crop((0,10,550,550))
 	img_3=img_3.crop((0,0 ,550,540))

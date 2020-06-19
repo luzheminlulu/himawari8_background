@@ -1,6 +1,7 @@
 向日葵8号卫星实时更新windows壁纸
 
-默认脚本运行路径为D:/
+默认脚本运行路径为D:\himawari8_background-master\
+现已支持背景图修改，背景图片为\images\background.png,可以根据需要自行替换
 
 windows任务计划程序设置如下：
 
