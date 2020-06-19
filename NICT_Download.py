@@ -28,13 +28,14 @@ def fill_img(img_1,img_2,img_3,img_4, img_save_path):
 	width, height = 1920, 1080      # 电脑屏幕大小
 	#new_img = Image.new(img_1.mode, (width, height), color='black')
 	new_img = Image.open("D:/himawari8_background-master/images/background.png")
+	#new_img = new_img.convert("RGBA")
 	img_1=img_1.crop((0,10,550,550))
-	img_2=img_2.crop((0,10,550,550))
-	img_3=img_3.crop((0,0 ,550,540))
+	img_2=img_2.crop((0,0 ,550,540))
+	img_3=img_3.crop((0,10,550,550))
 	img_4=img_4.crop((0,0 ,550,540))
 	new_img.paste(img_1, (410, 0))
-	new_img.paste(img_2, (960, 0))
-	new_img.paste(img_3, (410, 540))
+	new_img.paste(img_2, (410, 540))
+	new_img.paste(img_3, (960, 0))
 	new_img.paste(img_4, (960, 540))
 	new_img.save(img_save_path)
 	print(img_save_path + "图片合成成功")
@@ -53,45 +54,38 @@ def dl_main():
 	delat_utc_today = "".join(delat_utc_today_list)
 	
 	# 整合为链接 格式为：http://himawari8-dl.nict.go.jp/himawari8/img/D531106/1d/550/2018/09/25/065000_0_0.png
-	img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/" + delat_utc_today + "00_0_0.png"
-	name = delat_utc_today.replace("/", "_") + "00_0_0.png"  # 获取图片名字
-	# 图片保存路径
-	img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
-	# 下载图片
-	download_img(img_url, img_save_path)
-	# 合成图片
-	img_1 = Image.open(img_save_path)
 	
-	img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/" + delat_utc_today + "00_1_0.png"
-	name = delat_utc_today.replace("/", "_") + "00_1_0.png"  # 获取图片名字
-	# 图片保存路径
-	img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
-	# 下载图片
-	download_img(img_url, img_save_path)
-	# 合成图片
-	img_2 = Image.open(img_save_path)
+	img=[[[0 for i in range(550)] for i in range(550) ] for i in range(4)]
 	
-	img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/" + delat_utc_today + "00_0_1.png"
-	name = delat_utc_today.replace("/", "_") + "00_0_1.png"  # 获取图片名字
-	# 图片保存路径
-	img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
-	# 下载图片
-	download_img(img_url, img_save_path)
-	# 合成图片
-	img_3 = Image.open(img_save_path)
+	i=0
+	for row in range(2):
+		for col in range(2):
+			img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/%s00_%d_%d.png"%(delat_utc_today,row,col)
+			name = delat_utc_today.replace("/", "_") + "00_%d_%d.png"%(row,col)  # 获取图片名字
+			# 图片保存路径
+			img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
+			# 下载图片
+			download_img(img_url, img_save_path)
+			# 合成图片
+			img[i] = Image.open(img_save_path)
+						
+			#img = img[i].convert("RGBA")
+			#datas = img.getdata()
+			#newData = list()
+			#for item in datas:
+			#	if item[0]==0 and item[1]==0 and item[2]==0:
+			#		newData.append(( 255, 255, 255, 0))
+			#	else:
+			#		newData.append(item)
+			#img.putdata(newData)
+			#img[i] = img
+			
+			i=i+1
 	
-	img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/" + delat_utc_today + "00_1_1.png"
-	name = delat_utc_today.replace("/", "_") + "00_1_1.png"  # 获取图片名字
-	# 图片保存路径
-	img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
-	# 下载图片
-	download_img(img_url, img_save_path)
-	# 合成图片
-	img_4 = Image.open(img_save_path)
-	
+
 	new_img_save_path = "D:/himawari8_background-master/Wallpaper/" + delat_utc_today.replace("/", "_")+".png"
 	#print(new_img_save_path)
-	fill_img(img_1,img_2,img_3,img_4, new_img_save_path)
+	fill_img(img[0],img[1],img[2],img[3], new_img_save_path)
 	return new_img_save_path
 
 
