@@ -77,7 +77,7 @@ def dl_main():
 			datas = img.getdata()
 			newData = list()
 			for item in datas:
-				if item[0]<3 and item[1]<3  and item[2]<3 :
+				if item[0]<2 and item[1]<2  and item[2]<2 :
 					newData.append(( 0, 0, 0, 0))
 				else:
 					newData.append(item)
