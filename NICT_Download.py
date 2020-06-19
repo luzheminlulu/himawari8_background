@@ -17,6 +17,7 @@ def clear_dir(path):
 		except:
 			print("删除%s错误!"%(my_file))
 
+			
 def download_img(url, img_save_path):
 	img = requests.get(url)
 	with open(img_save_path, "wb") as fwi:
@@ -76,13 +77,12 @@ def dl_main():
 			datas = img.getdata()
 			newData = list()
 			for item in datas:
-				if item[0]<5 and item[1]<5  and item[2]<5 :
+				if item[0]<3 and item[1]<3  and item[2]<3 :
 					newData.append(( 0, 0, 0, 0))
 				else:
 					newData.append(item)
 			img.putdata(newData)
-			#img.save(img_save_path)
-			#img = Image.open(img_save_path)
+
 			#print(img.mode)
 			if i==0:
 				img_0 = img
