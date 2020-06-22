@@ -4,9 +4,9 @@
 现已支持背景图修改，背景图片为\images\background.png,可以根据需要自行替换
 
 已添加天气功能，可以在set_picure.py中修改城市
-···
+```
 city="shanghai"
-···
+```
 
 windows任务计划程序设置如下：
 
