@@ -7,6 +7,9 @@ import win32api, win32con, win32gui
 import NICT_Download
 import weather
 
+city="shanghai"
+wallpaper_path = "D:\himawari8_background-master\Wallpaper\Wallpaper.png"
+
 
 def set_desktop_windows(imagepath):
 	k = win32api.RegOpenKeyEx(win32con.HKEY_CURRENT_USER, "Control Panel\\Desktop", 0, win32con.KEY_SET_VALUE)
@@ -18,15 +21,10 @@ def set_desktop_windows(imagepath):
 if __name__ == '__main__':
 	try:
 		img_save_path = NICT_Download.dl_main()
+		weather.draw_weather(city,img_save_path,wallpaper_path)
 	except Exception as e:
 		print(e)
+		wallpaper_path = img_save_path
 	# 这里的路径必须为绝对路径
-	
-	try:
-		wallpaper_path = "D:\himawari8_background-master\Wallpaper\Wallpaper.png"
-		weather.draw_weather("shanghai",img_save_path,wallpaper_path)
-	except Exception as e:
-		print(e)
-		
 	
 	set_desktop_windows(wallpaper_path)
