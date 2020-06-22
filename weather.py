@@ -4,6 +4,8 @@ import os
 from bs4 import BeautifulSoup
 import random
 
+import math
+
 from PIL import Image,ImageDraw,ImageFont
 
 def get_weather(city):
@@ -41,21 +43,40 @@ def get_weather(city):
 	
 	return str
 		
-def draw_weather(city,img_save_path,new_img_save_path):
-	weather = get_weather(city)
-	
-	im = Image.open(img_save_path) # 打开文件
-	#print(im.format, im.size, im.mode)
-	draw = ImageDraw.Draw(im) #修改图片
-	ft_1 = ImageFont.truetype("C:\Windows\Fonts\STXIHEI.TTF", 30)
-	ft_2 = ImageFont.truetype("C:\Windows\Fonts\STXIHEI.TTF", 25)
-	draw.text((250,50), "上海", font = ft_1, fill = (255, 255 ,255)) #利用ImageDraw的内置函数，在图片上写入文字
-	draw.text((250,100), weather, font = ft_2, fill = (255, 255 ,255)) #利用ImageDraw的内置函数，在图片上写入文字
-	draw.line((240, 95, 500, 95), '#FFFFFF')
-	draw.line((500, 95, 760, 230), '#FFFFFF')
-	draw.ellipse((755, 225, 765, 235), fill=(255, 255, 255), outline='#FFFFFF', width=1)
-	#im.show()
-	im.save(new_img_save_path)
+def draw_weather(city_list,city_name,Lng_list,Lat_list,img_save_path):
+	i=0
+	for city in city_list:
+		print("开始获取%s天气..."%(city_name[i]))
+		weather = get_weather(city)
+		
+		factor_x = 1.0+(math.cos(math.radians(abs(Lng_list[i]-140))))/(6.617-math.cos(math.radians(abs(Lng_list[i]-140))))
+		factor_y = 1.0+(math.cos(math.radians(abs(Lat_list[i]))))/(6.617-math.cos(math.radians(abs(Lat_list[i]))))
+		print("投影校正系数:%f,%f"%(factor_x,factor_y))
+		actual_lng = int(960.0+factor_x*550.0*math.cos(math.radians(Lat_list[i]))*math.sin(math.radians(Lng_list[i]-140.0)))
+		actual_lat = int(540.0-factor_y*(550.0*math.sin(math.radians(Lat_list[i]))))
+		print("开始叠加%s天气:%d,%d"%(city_name[i],actual_lng,actual_lat))
+ 		
+		im = Image.open(img_save_path) 
+		draw = ImageDraw.Draw(im)      
+		ft_1 = ImageFont.truetype("C:\Windows\Fonts\STXIHEI.TTF", 30)
+		ft_2 = ImageFont.truetype("C:\Windows\Fonts\STXIHEI.TTF", 25)
+		
+		offset_y= 340*(i%3)
+		offset_x=1270*(i//3)
+
+		if(offset_x==0):
+			offset_xx=0
+		else:
+			offset_xx=offset_x-250
+		
+		draw.text((190+offset_x , 50+offset_y),city_name[i], font = ft_1, fill = (255, 255 ,255)) 
+		draw.text((200+offset_x ,100+offset_y),weather, font = ft_2, fill = (255, 255 ,255)) 
+		draw.line((190+offset_x , 95+offset_y ,440+offset_x, 95+offset_y), '#FFFFFF')
+		draw.line((440+offset_xx, 95+offset_y ,actual_lng  , actual_lat ), '#FFFFFF')
+		draw.ellipse((actual_lng-5,actual_lat-5, actual_lng+5, actual_lat+5), fill=(255, 255, 255), outline='#FFFFFF', width=1)
+		#im.show()
+		im.save(img_save_path)
+		i+=1
 	
 	
 	

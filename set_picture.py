@@ -7,7 +7,10 @@ import win32api, win32con, win32gui
 import NICT_Download
 import weather
 
-city="shanghai"
+name = ["上海","杭州","滁州"] #城市名
+city = ["shanghai","hangzhou","chuzhou"] #城市拼音
+Lng  = [121,120,118]        #经度(50~140~180)
+Lat  = [ 31,30,32]         #纬度(-90~90)
 wallpaper_path = "D:\himawari8_background-master\Wallpaper\Wallpaper.png"
 
 
@@ -21,7 +24,7 @@ def set_desktop_windows(imagepath):
 if __name__ == '__main__':
 	try:
 		img_save_path = NICT_Download.dl_main()
-		weather.draw_weather(city,img_save_path,wallpaper_path)
-		set_desktop_windows(wallpaper_path)
+		weather.draw_weather(city,name,Lng,Lat,img_save_path)
+		set_desktop_windows(img_save_path)
 	except Exception as e:
 		print(e)
