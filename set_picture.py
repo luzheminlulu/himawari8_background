@@ -7,10 +7,10 @@ import win32api, win32con, win32gui
 import NICT_Download
 import weather
 
-name = ["上海","杭州","滁州"] #城市名
-city = ["shanghai","hangzhou","chuzhou"] #城市拼音
-Lng  = [121,120,118]        #经度(50~140~180)
-Lat  = [ 31,30,32]         #纬度(-90~90)
+name = ["上海","杭州"] #城市名
+city = ["shanghai","hangzhou"] #城市拼音
+Lng  = [121,120]        #经度(50~140~180)
+Lat  = [ 31,30]         #纬度(-90~90)
 wallpaper_path = "D:\himawari8_background-master\Wallpaper\Wallpaper.png"
 
 

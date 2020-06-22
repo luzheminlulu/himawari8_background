@@ -61,7 +61,7 @@ def draw_weather(city_list,city_name,Lng_list,Lat_list,img_save_path):
 		ft_1 = ImageFont.truetype("C:\Windows\Fonts\STXIHEI.TTF", 30)
 		ft_2 = ImageFont.truetype("C:\Windows\Fonts\STXIHEI.TTF", 25)
 		
-		offset_y= 340*(i%3)
+		offset_y= 335*(i%3)
 		offset_x=1270*(i//3)
 
 		if(offset_x==0):
@@ -69,10 +69,10 @@ def draw_weather(city_list,city_name,Lng_list,Lat_list,img_save_path):
 		else:
 			offset_xx=offset_x-250
 		
-		draw.text((190+offset_x , 50+offset_y),city_name[i], font = ft_1, fill = (255, 255 ,255)) 
-		draw.text((200+offset_x ,100+offset_y),weather, font = ft_2, fill = (255, 255 ,255)) 
-		draw.line((190+offset_x , 95+offset_y ,440+offset_x, 95+offset_y), '#FFFFFF')
-		draw.line((440+offset_xx, 95+offset_y ,actual_lng  , actual_lat ), '#FFFFFF')
+		draw.text((200+offset_x , 45+offset_y),city_name[i], font = ft_1, fill = (255, 255 ,255)) 
+		draw.text((210+offset_x ,95+offset_y),weather, font = ft_2, fill = (255, 255 ,255)) 
+		draw.line((200+offset_x , 90+offset_y ,450+offset_x, 90+offset_y), '#FFFFFF')
+		draw.line((450+offset_xx, 90+offset_y ,actual_lng  , actual_lat ), '#FFFFFF')
 		draw.ellipse((actual_lng-5,actual_lat-5, actual_lng+5, actual_lat+5), fill=(255, 255, 255), outline='#FFFFFF', width=1)
 		#im.show()
 		im.save(img_save_path)
