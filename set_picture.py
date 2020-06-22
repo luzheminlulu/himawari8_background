@@ -24,7 +24,7 @@ if __name__ == '__main__':
 		weather.draw_weather(city,img_save_path,wallpaper_path)
 	except Exception as e:
 		print(e)
-		wallpaper_path = img_save_path
+		wallpaper_path = "D:\himawari8_background-master\images\5.png"
 	# 这里的路径必须为绝对路径
 	
 	set_desktop_windows(wallpaper_path)
