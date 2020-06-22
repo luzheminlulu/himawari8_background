@@ -34,18 +34,12 @@ def get_weather(city):
 		td_list= tr.select('td')
 		th_list=tr.select('th')
 		str=""
-		#for th in th_list:
-		#	str+=th.getText()+'\n'
-		#print(td_list)
-		#for td in td_list:
-		#	str += label[i]+":"
-		#	str += td.getText()+"\n"
-		#	i+=1
+
 		for i in range(2,10):
 			str += label[i]+":"
 			str += td_list[i].getText()+"\n"
 	
-		return str
+	return str
 		
 def draw_weather(city,img_save_path,new_img_save_path):
 	weather = get_weather(city)
@@ -66,4 +60,4 @@ def draw_weather(city,img_save_path,new_img_save_path):
 	
 	
 if __name__ == '__main__':
-	draw_weather()
+	draw_weather("shanghai",".",".")
