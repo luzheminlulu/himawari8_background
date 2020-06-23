@@ -13,33 +13,28 @@ def get_weather(city):
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11",
 		]
 	headers = {'User-Agent': random.choice(user_agent)}
-	urls = []
-	a="https://tianqi.911cha.com/"
-	url=a+city
-	#print(url)
-	urls.append(url)
-	label=["1","2","天气","温度","湿度","风力","风级","降水量","体感温度","云量"]
 	
-	for url in urls:
-		response = requests.get(url,headers=headers)
-		#print(response)
-		soup = BeautifulSoup(response.text, 'html.parser')
-		weather_list = soup.select('div[class="mcon noi"] table')
-		#for weather in weather_list:
-		weather = weather_list[0]
-		weather_date = weather.select('tr')[0].getText()
-		tr_list = weather.select('tr')
-		i=0
-		#for tr in tr_list:
-		tr=tr_list[3]
-		#print(tr)
-		td_list= tr.select('td')
-		th_list=tr.select('th')
-		str=""
+	weather_url="https://tianqi.911cha.com/"
+	url=weather_url+city
+	#print(url)
+	label=["1","2","天气","温度","湿度","风力","风级","降水量","体感温度","云量"]
+		
+	response = requests.get(url,headers=headers)
+	#print(response)
+	soup = BeautifulSoup(response.text, 'html.parser')
+	weather_list = soup.select('div[class="mcon noi"] table')
+	weather = weather_list[0]
+	weather_date = weather.select('tr')[0].getText()
+	tr_list = weather.select('tr')
+	tr=tr_list[3]
+	#print(tr)
+	td_list= tr.select('td')
+	th_list=tr.select('th')
+	str=""
 
-		for i in range(2,10):
-			str += label[i]+":"
-			str += td_list[i].getText()+"\n"
+	for i in range(2,10):
+		str += label[i]+":"
+		str += td_list[i].getText()+"\n"
 	
 	return str
 		
@@ -52,8 +47,8 @@ def draw_weather(city_list,city_name,Lng_list,Lat_list,img_save_path):
 		factor_x = 1.0+(math.cos(math.radians(abs(Lng_list[i]-140))))/(6.617-math.cos(math.radians(abs(Lng_list[i]-140))))
 		factor_y = 1.0+(math.cos(math.radians(abs(Lat_list[i]))))/(6.617-math.cos(math.radians(abs(Lat_list[i]))))
 		print("投影校正系数:%f,%f"%(factor_x,factor_y))
-		actual_lng = int(960.0+factor_x*550.0*math.cos(math.radians(Lat_list[i]))*math.sin(math.radians(Lng_list[i]-140.0)))
-		actual_lat = int(540.0-factor_y*(550.0*math.sin(math.radians(Lat_list[i]))))
+		actual_lng = int(960.0+factor_x*545.0*math.cos(math.radians(Lat_list[i]))*math.sin(math.radians(Lng_list[i]-140.0)))
+		actual_lat = int(540.0-factor_y*(545.0*math.sin(math.radians(Lat_list[i]))))
 		print("开始叠加%s天气:%d,%d"%(city_name[i],actual_lng,actual_lat))
  		
 		im = Image.open(img_save_path) 
