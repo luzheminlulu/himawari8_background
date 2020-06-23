@@ -6,16 +6,6 @@ from PIL import Image
 import requests
 import re
 import datetime
-import os
-
-def clear_dir(path):
-	print("正在删除%s下的文件"%(path))
-	dir_list = os.listdir(path)
-	for my_file in dir_list:
-		try:
-			os.remove(path+my_file)
-		except:
-			print("删除%s错误!"%(my_file))
 
 			
 def download_img(url, img_save_path):
@@ -47,8 +37,6 @@ def fill_img(img_0,img_1,img_2,img_3, img_save_path):
 
 
 def dl_main():
-	clear_dir("D:/himawari8_background-master/Download_Picture/")
-	clear_dir("D:/himawari8_background-master/Wallpaper/")
 	print("开始下载图片")
 	# 获取当前系统时间
 	utc_today = datetime.datetime.utcnow() - datetime.timedelta(minutes=20)  # 获取GMT时间并减去20分钟

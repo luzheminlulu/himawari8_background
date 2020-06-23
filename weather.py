@@ -15,7 +15,7 @@ def get_weather(city):
 	headers = {'User-Agent': random.choice(user_agent)}
 	
 	weather_url="https://tianqi.911cha.com/"
-	url=weather_url+city
+	url=weather_url+city+"/"
 	#print(url)
 	label=["1","2","天气","温度","湿度","风力","风级","降水量","体感温度","云量"]
 		
@@ -26,8 +26,8 @@ def get_weather(city):
 	weather = weather_list[0]
 	weather_date = weather.select('tr')[0].getText()
 	tr_list = weather.select('tr')
+	#print(tr_list)
 	tr=tr_list[3]
-	#print(tr)
 	td_list= tr.select('td')
 	th_list=tr.select('th')
 	str=""
@@ -36,16 +36,18 @@ def get_weather(city):
 		str += label[i]+":"
 		str += td_list[i].getText()+"\n"
 	
+	print(str)
 	return str
-		
+	
+	
 def draw_weather(city_list,city_name,Lng_list,Lat_list,img_save_path):
 	i=0
 	for city in city_list:
 		print("开始获取%s天气..."%(city_name[i]))
 		weather = get_weather(city)
 		
-		factor_x = 1.0+(math.cos(math.radians(abs(Lng_list[i]-140))))/(6.617-math.cos(math.radians(abs(Lng_list[i]-140))))
-		factor_y = 1.0+(math.cos(math.radians(abs(Lat_list[i]))))/(6.617-math.cos(math.radians(abs(Lat_list[i]))))
+		factor_x = 1.0+(math.cos(math.radians(abs(Lng_list[i]-140))))/(6.61701459739444357-math.cos(math.radians(abs(Lng_list[i]-140))))
+		factor_y = 1.0+(math.cos(math.radians(abs(Lat_list[i]))))/(6.61701459739444357-math.cos(math.radians(abs(Lat_list[i]))))
 		print("投影校正系数:%f,%f"%(factor_x,factor_y))
 		actual_lng = int(960.0+factor_x*545.0*math.cos(math.radians(Lat_list[i]))*math.sin(math.radians(Lng_list[i]-140.0)))
 		actual_lat = int(540.0-factor_y*(545.0*math.sin(math.radians(Lat_list[i]))))
@@ -76,4 +78,4 @@ def draw_weather(city_list,city_name,Lng_list,Lat_list,img_save_path):
 	
 	
 if __name__ == '__main__':
-	draw_weather("shanghai",".",".")
+	get_weather("shanghai")
