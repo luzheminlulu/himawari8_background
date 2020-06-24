@@ -39,7 +39,7 @@ def fill_img(img_0,img_1,img_2,img_3, img_save_path):
 def dl_main():
 	print("开始下载图片")
 	# 获取当前系统时间
-	utc_today = datetime.datetime.utcnow() - datetime.timedelta(minutes=20)  # 获取GMT时间并减去20分钟
+	utc_today = datetime.datetime.utcnow() - datetime.timedelta(minutes=30)  # 获取GMT时间并减去20分钟
 	delat_utc_today = utc_today.strftime("%Y/%m/%d/%H%M")  # 时间格式化
 	# 分钟向下取整
 	delat_utc_today_list = list(delat_utc_today)
