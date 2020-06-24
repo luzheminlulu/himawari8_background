@@ -66,8 +66,8 @@ def dl_main():
 			datas = img.getdata()
 			newData = list()
 			for item in datas:
-				if item[0]<8 and item[1]<8  and item[2]<8 :
-					newData.append(( item[0], item[1], item[2], item[0]+item[1]+item[2]))
+				if item[0]<=10 and item[1]<=10  and item[2]<=10 :
+					newData.append(( item[0], item[1], item[2], int(-17.0*(item[0]+item[1]+item[2])*(item[0]+item[1]+item[2])/60.0+17.0*(item[0]+item[1]+item[2]))))
 				else:
 					newData.append(item)
 			img.putdata(newData)
