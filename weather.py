@@ -47,7 +47,7 @@ def draw_weather(city_list,city_name,Lng_list,Lat_list,img_save_path):
 			print("\n开始获取%s天气..."%(city_name[i]))
 			weather = get_weather(city)
 			
-			factor_x = 1.0+(math.cos(math.radians(abs(Lng_list[i]-140))))/(6.617014597-math.cos(math.radians(abs(Lng_list[i]-140))))
+			factor_x = 1.0+(math.cos(math.radians(abs(Lng_list[i]-140))))/(6.617014597-math.cos(math.radians(abs(Lng_list[i]-140.0))))
 			factor_y = 1.0+(math.cos(math.radians(abs(Lat_list[i]))))/(6.617014597-math.cos(math.radians(abs(Lat_list[i]))))
 			print("投影校正系数:%f,%f"%(factor_x,factor_y))
 			actual_lng = int(960.0+factor_x*545.0*math.cos(math.radians(Lat_list[i]))*math.sin(math.radians(Lng_list[i]-140.0)))
