@@ -9,10 +9,10 @@ import weather
 import os
 
 
-name = [    "上海",     "杭州"   ] #城市名(建议少于等于6个)
-city = ["shanghai", "hangzhou"   ] #城市拼音
-Lng  = [       121,        120   ] #经度  (建议60~140~180)
-Lat  = [        31,         30   ] #纬度  (建议-80~80)
+name = ["滁州"     ,     "杭州" , "" ,     "上海",   ] #城市名(建议少于等于6个)
+city = ["chuzhou"  , "hangzhou" , "" , "shanghai",   ] #城市拼音
+Lng  = [       118 ,        120 , 0  ,        121,   ] #经度  (建议60~140~180)
+Lat  = [        32 ,         30 , 0  ,         31,   ] #纬度  (建议-80~80)
 
 def clear_dir(path):
 	print("正在删除%s下的文件"%(path))

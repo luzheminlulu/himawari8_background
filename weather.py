@@ -60,7 +60,7 @@ def draw_weather(city_list,city_name,Lng_list,Lat_list,img_save_path):
 			ft_2 = ImageFont.truetype("C:\Windows\Fonts\STXIHEI.TTF", 25)
 			
 			offset_y= 335*(i%3)
-			offset_x=1350*(i//3)
+			offset_x=1340*(i//3)
 	
 			if(offset_x==0):
 				offset_xx=0
