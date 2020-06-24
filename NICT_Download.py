@@ -46,12 +46,13 @@ def dl_main():
 	delat_utc_today_list[-1] = "0"
 	delat_utc_today = "".join(delat_utc_today_list)
 	
-	# 整合为链接 格式为：http://himawari8-dl.nict.go.jp/himawari8/img/D531106/1d/550/2018/09/25/065000_0_0.png
+	# 整合为链接 格式为：http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/2020/06/24/023000_0_0.png
 	
 	i=0
 	for row in range(2):
 		for col in range(2):
 			img_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/2d/550/%s00_%d_%d.png"%(delat_utc_today,row,col)
+			print(img_url)
 			name = delat_utc_today.replace("/", "_") + "00_%d_%d.png"%(row,col)  # 获取图片名字
 			# 图片保存路径
 			img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
@@ -66,7 +67,7 @@ def dl_main():
 			newData = list()
 			for item in datas:
 				if item[0]<8 and item[1]<8  and item[2]<8 :
-					newData.append(( 0, 0, 0, 0))
+					newData.append(( item[0], item[1], item[2], item[0]+item[1]+item[2]))
 				else:
 					newData.append(item)
 			img.putdata(newData)
