@@ -29,7 +29,7 @@ def get_weather(city):
 	#print(tr_list)
 	tr=tr_list[3]
 	td_list= tr.select('td')
-	th_list=tr.select('th')
+	#th_list=tr.select('th')
 	str=""
 
 	for i in range(2,10):
@@ -50,8 +50,8 @@ def draw_weather(city_list,city_name,Lng_list,Lat_list,img_save_path):
 			factor_x = 1.0+(math.cos(math.radians(abs(Lng_list[i]-140))))/(6.617014597-math.cos(math.radians(abs(Lng_list[i]-140.0))))
 			factor_y = 1.0+(math.cos(math.radians(abs(Lat_list[i]))))/(6.617014597-math.cos(math.radians(abs(Lat_list[i]))))
 			print("投影校正系数:%f,%f"%(factor_x,factor_y))
-			actual_lng = int(960.0+factor_x*545.0*math.cos(math.radians(Lat_list[i]))*math.sin(math.radians(Lng_list[i]-140.0)))
-			actual_lat = int(540.0-factor_y*(545.0*math.sin(math.radians(Lat_list[i]))))
+			actual_lng = int(960.0+factor_x*540.0*math.cos(math.radians(Lat_list[i]))*math.sin(math.radians(Lng_list[i]-140.0)))
+			actual_lat = int(540.0-factor_y*(540.0*math.sin(math.radians(Lat_list[i]))))
 			print("开始叠加%s天气:%d,%d"%(city_name[i],actual_lng,actual_lat))
 			
 			im = Image.open(img_save_path) 
