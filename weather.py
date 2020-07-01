@@ -29,7 +29,6 @@ def get_weather(city):
 	#print(tr_list)
 	tr=tr_list[3]
 	td_list= tr.select('td')
-	#th_list=tr.select('th')
 	str=""
 
 	for i in range(2,10):
