@@ -1,11 +1,18 @@
 向日葵8号卫星实时更新windows壁纸
 
-默认脚本运行路径为D:\himawari8_background-master\
+默认脚本运行路径为D:\himawari8_background-master\，可以在set_picure.py中修改路径
+```
+dir  =  "D:/himawari8_background-master/"
+```
+
 现已支持背景图修改，背景图片为\images\background.png,可以根据需要自行替换
 
 已添加天气功能，可以在set_picure.py中修改城市
 ```
-city="shanghai"
+name = ["滁州"     ,     "杭州" , "" ,     "上海",   ] #城市名(建议少于等于6个)
+city = ["chuzhou"  , "hangzhou" , "" , "shanghai",   ] #城市拼音
+Lng  = [       118 ,        120 , 0  ,        121,   ] #经度  (建议60~140~180)
+Lat  = [        32 ,         30 , 0  ,         31,   ] #纬度  (建议-80~80)
 ```
 
 windows任务计划程序设置如下：
