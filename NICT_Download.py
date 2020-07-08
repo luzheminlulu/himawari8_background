@@ -15,10 +15,10 @@ def download_img(url, img_save_path):
 		print(img_save_path + "图片下载成功")
 
 
-def fill_img(img_0,img_1,img_2,img_3, img_save_path):
+def fill_img(img_0,img_1,img_2,img_3,dir,img_save_path):
 	width, height = 1920, 1080      # 电脑屏幕大小
 	#new_img = Image.new(img_1.mode, (width, height), color='black')
-	new_img = Image.open("D:/himawari8_background-master/images/background.png")
+	new_img = Image.open(dir+"images/background.png")
 	new_img = new_img.convert("RGBA")
 	img_0=img_0.crop((0,10,550,550))
 	img_1=img_1.crop((0,0 ,550,540))
@@ -36,7 +36,7 @@ def fill_img(img_0,img_1,img_2,img_3, img_save_path):
 	print(img_save_path + "图片合成成功")
 
 
-def dl_main():
+def dl_main(dir):
 	print("开始下载图片")
 	# 获取当前系统时间
 	utc_today = datetime.datetime.utcnow() - datetime.timedelta(minutes=30)  # 获取GMT时间并减去20分钟
@@ -55,7 +55,7 @@ def dl_main():
 			print(img_url)
 			name = delat_utc_today.replace("/", "_") + "00_%d_%d.png"%(row,col)  # 获取图片名字
 			# 图片保存路径
-			img_save_path = "D:/himawari8_background-master/Download_Picture/" + name
+			img_save_path = dir+"Download_Picture/" + name
 			# 下载图片
 			download_img(img_url, img_save_path)
 			# 合成图片
@@ -85,9 +85,9 @@ def dl_main():
 			i=i+1
 	
 
-	new_img_save_path = "D:/himawari8_background-master/Wallpaper/" + delat_utc_today.replace("/", "_")+".png"
+	new_img_save_path = dir+"Wallpaper/" + delat_utc_today.replace("/", "_")+".png"
 	#print(new_img_save_path)
-	fill_img(img_0,img_1,img_2,img_3, new_img_save_path)
+	fill_img(img_0,img_1,img_2,img_3,dir,new_img_save_path)
 	return new_img_save_path
 
 
