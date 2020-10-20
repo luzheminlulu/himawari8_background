@@ -1,9 +1,6 @@
 向日葵8号卫星实时更新windows壁纸
 
-默认脚本运行路径为D:\himawari8_background-master\，可以在set_picure.py中修改路径
-```
-dir  =  "D:/himawari8_background-master/"
-```
+脚本运行路径会自动识别，无需手动修改
 
 现已支持背景图修改，背景图片为\images\background.png,可以根据需要自行替换
 
