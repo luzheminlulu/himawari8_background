@@ -8,7 +8,7 @@ import NICT_Download
 import weather
 import os
 
-dir  =  os.getcwd()+"/"
+dir  =  os.path.dirname(os.path.abspath(__file__))+"\\"   #os.getcwd()+"\""
 
 name = ["滁州"     ,     "杭州" , "" ,     "上海",   ] #城市名(建议少于等于6个)
 city = ["chuzhou"  , "hangzhou" , "" , "shanghai",   ] #城市拼音
